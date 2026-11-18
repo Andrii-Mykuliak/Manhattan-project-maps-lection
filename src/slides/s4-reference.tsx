@@ -43,7 +43,7 @@ const Access: React.FC = () => {
         ]}
       />
       <At x={96} y={850} w={1728} step={2} delay={10} size={32}>
-        Лише <M>m[k]</M> змінює словник. Він зручний для <M>++m[k]</M> і <M>m[k] = v</M>, але не для перевірки.
+        Лише <M>m[k]</M> змінює словник. Він зручний для <M>m[k]++</M> і <M>m[k] = v</M>, але не для перевірки.
       </At>
       <Source />
     </Slide>
@@ -56,7 +56,7 @@ const Find: React.FC = () => {
   return (
     <Slide title="Пошук без побічних ефектів">
       <Legend />
-      <Blueprint x={96} y={250} w={1728} h={370} title="Креслення" p={s(1, 0)}>
+      <Blueprint x={96} y={250} w={1728} h={370} title="Приклад" p={s(1, 0)}>
         <Code
           x={0}
           y={0}
@@ -164,7 +164,7 @@ const SizeIter: React.FC = () => {
           stagger={6}
           style={{ position: "relative" }}
           code={`
-            for (std::unordered_map<std::string, int>::iterator it = m.begin(); it != m.end(); ++it) {
+            for (std::unordered_map<std::string, int>::iterator it = m.begin(); it != m.end(); it++) {
                 std::cout << it->first << ": " << it->second << '\\n';
             }
           `}

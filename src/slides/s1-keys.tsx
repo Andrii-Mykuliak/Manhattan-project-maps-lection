@@ -145,7 +145,7 @@ const FirstDict: React.FC = () => {
   return (
     <Slide title="Перший словник">
       <Lead>Кожна перемога додає команді одне очко. Рахуємо очки за назвою команди.</Lead>
-      <Blueprint x={96} y={280} w={1050} h={320} title="Креслення" tag="C++11" p={s(0, 14)}>
+      <Blueprint x={96} y={280} w={1050} h={320} title="Приклад" tag="C++11" p={s(0, 14)}>
         <Code
           x={0}
           y={0}
@@ -156,9 +156,9 @@ const FirstDict: React.FC = () => {
           style={{ position: "relative" }}
           code={`
             std::unordered_map<std::string, int> scores;
-            [[1~50|++scores["Orion"];]]
-            [[2~50|++scores["Vega"];]]
-            [[3~50|++scores["Orion"];]]
+            [[1~50|scores["Orion"]++;]]
+            [[2~50|scores["Vega"]++;]]
+            [[3~50|scores["Orion"]++;]]
             // Orion → 2, Vega → 1
           `}
         />

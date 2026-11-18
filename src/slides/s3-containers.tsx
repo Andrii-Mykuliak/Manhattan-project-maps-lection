@@ -154,7 +154,7 @@ const Iterators: React.FC = () => {
         </svg>
       </div>
       {walk >= 0 && walk < WALK * RECS.length && (
-        <div style={{ position: "absolute", left: px + 50, top: RY - 80, fontFamily: F.mono, fontWeight: 700, fontSize: 28, color: C.red }}>++it</div>
+        <div style={{ position: "absolute", left: px + 50, top: RY - 80, fontFamily: F.mono, fontWeight: 700, fontSize: 28, color: C.red }}>it++</div>
       )}
       <div style={{ position: "absolute", left: 96, top: 590, fontFamily: F.mono, fontWeight: 700, fontSize: 30, lineHeight: 1.5, opacity: clamp01(shown) }}>
         {atEnd ? (
@@ -195,7 +195,7 @@ const Example: React.FC = () => {
   const { s } = useSteps();
   return (
     <Slide title="Словник від початку до кінця">
-      <Blueprint x={96} y={186} w={1270} h={540} title="Креслення" p={s(0, 10)}>
+      <Blueprint x={96} y={186} w={1270} h={540} title="Приклад" p={s(0, 10)}>
         <Code
           x={0}
           y={0}
@@ -212,7 +212,7 @@ const Example: React.FC = () => {
             @2 stock.insert({"pear", 5});
             @3 // ітерування
             @3 for (std::unordered_map<std::string, int>::iterator it = stock.begin();
-            @3      it != stock.end(); ++it) {
+            @3      it != stock.end(); it++) {
             @4     // виведення
             @4     std::cout << [[4@20|it->first]] << ": " << [[4@20|it->second]] << '\\n';
             @3 }
@@ -230,7 +230,7 @@ const Example: React.FC = () => {
         Тип <M>std::unordered_map&lt;std::string, int&gt;::iterator</M> читається як «ітератор саме цього словника».
       </Bullet>
       <Bullet x={96} y={850} w={1728} step={3} delay={42} size={30}>
-        <M>it</M> пробігає записи від <M>stock.begin()</M> до <M>stock.end()</M>, а <M>++it</M> переходить до наступного.
+        <M>it</M> пробігає записи від <M>stock.begin()</M> до <M>stock.end()</M>, а <M>it++</M> переходить до наступного.
       </Bullet>
       <Bullet x={96} y={940} w={1728} step={4} delay={70} size={30}>
         Що таке ітератор і чому тут стрілка <M>-&gt;</M>, розберемо далі.
@@ -303,7 +303,7 @@ const FindChange: React.FC = () => {
   const bumped = t(1, 70) >= 0;
   return (
     <Slide title="Ітератори: знайти й змінити">
-      <Blueprint x={96} y={186} w={1728} h={260} title="Креслення" p={s(1, 0)}>
+      <Blueprint x={96} y={186} w={1728} h={260} title="Приклад" p={s(1, 0)}>
         <Code
           x={0}
           y={0}
@@ -367,7 +367,7 @@ const EraseLoop: React.FC = () => {
                 if (it->second == 0) {
                     it = [[2|stock.erase(it)]];
                 } else {
-                    [[2@20|++it]];
+                    [[2@20|it++]];
                 }
             }
           `}
@@ -377,7 +377,7 @@ const EraseLoop: React.FC = () => {
         <M>erase(it)</M> робить <M>it</M> недійсним, тому продовжуємо з ітератора, який повертає <M>erase</M>.
       </Bullet>
       <Bullet x={96} y={750} w={1728} step={2} delay={42} size={31}>
-        Тому <M>++it</M> робимо лише тоді, коли запис залишився у словнику.
+        Тому <M>it++</M> робимо лише тоді, коли запис залишився у словнику.
       </Bullet>
       <Bullet x={96} y={850} w={1728} step={3} size={31}>
         Перебудова таблиці (rehash) робить недійсними <A>всі</A> ітератори, а вставка може її спричинити.

@@ -49,7 +49,7 @@ const Task: React.FC = () => {
   );
 };
 
-/* Hint: build the stock with ++stock[name], answer queries with find; the trap of stock["banana"]. */
+/* Hint: build the stock with stock[name]++, answer queries with find; the trap of stock["banana"]. */
 const INPUT = ["apple", "pear", "apple", "plum", "pear"];
 const ROWS = ["apple", "pear", "plum"];
 const QUERIES: [string, number][] = [
@@ -68,7 +68,7 @@ const Hint: React.FC = () => {
   return (
     <Slide title="Підказка">
       <Lead>
-        Під час читання товарів рахуйте <M>++stock[name]</M>, а запити перевіряйте через <M>find</M>.
+        Під час читання товарів рахуйте <M>stock[name]++</M>, а запити перевіряйте через <M>find</M>.
       </Lead>
       {INPUT.map((w, i) => {
         const tt = read - 4 - i * 18;
@@ -169,9 +169,9 @@ const SolutionRead: React.FC = () => {
                 std::unordered_map<std::string, int> stock;
 
                 std::cin >> n;
-                for (int i = 0; i < n; ++i) {
+                for (int i = 0; i < n; i++) {
                     std::cin >> name;
-                    ++[[1|stock[name]]];
+                    [[1|stock[name]]]++;
                 }
           `}
         />
@@ -205,7 +205,7 @@ const SolutionQuery: React.FC = () => {
           style={{ position: "relative" }}
           code={`
                 std::cin >> q;
-                for (int i = 0; i < q; ++i) {
+                for (int i = 0; i < q; i++) {
                     std::cin >> name;
                     std::unordered_map<std::string, int>::iterator it = [[1|stock.find(name)]];
                     if (it == stock.end()) {

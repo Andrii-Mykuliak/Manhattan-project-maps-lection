@@ -103,7 +103,7 @@ const Shelf: React.FC = () => {
       >
         <div style={{ position: "absolute", inset: 8, border: `1.5px solid ${BP.edge}` }} />
         <div style={{ fontFamily: F.head, fontWeight: 600, fontSize: 30, letterSpacing: 3, color: BP.text }}>ХЕШ-ФУНКЦІЯ</div>
-        <div style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 26, color: BP.kw }}>++stock[name]</div>
+        <div style={{ fontFamily: F.mono, fontWeight: 700, fontSize: 26, color: BP.kw }}>stock[name]++</div>
       </div>
       <svg width={1920} height={1080} style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none" }}>
         <line x1={120} y1={MY + 30} x2={MX - 240} y2={MY + 30} stroke={C.line} strokeWidth={2} strokeDasharray="10 10" />
