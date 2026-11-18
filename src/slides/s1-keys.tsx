@@ -108,8 +108,7 @@ const ArrayVsDict: React.FC = () => {
   );
 };
 
-/* First dictionary: counting teams; the table on the right follows the loop. */
-const TEAMS = ["Orion", "Vega", "Orion"];
+/* First dictionary: each line adds a point to a team; the table on the right follows. */
 
 type Tick = { at: number; d: number; v: number };
 
@@ -142,12 +141,11 @@ const Cell: React.FC<{ k: string; ticks: Tick[]; y: number }> = ({ k, ticks, y }
 };
 
 const FirstDict: React.FC = () => {
-  const { s, t } = useSteps();
-  const cur = [3, 2, 1].find((i) => t(i, 0) >= 0) ?? 0;
+  const { s } = useSteps();
   return (
     <Slide title="Перший словник">
-      <Lead>Рахуємо, скільки разів кожна команда трапилася у списку.</Lead>
-      <Blueprint x={96} y={280} w={1050} h={360} title="Креслення" tag="C++11" p={s(0, 14)}>
+      <Lead>Кожна перемога додає команді одне очко. Рахуємо очки за назвою команди.</Lead>
+      <Blueprint x={96} y={280} w={1050} h={320} title="Креслення" tag="C++11" p={s(0, 14)}>
         <Code
           x={0}
           y={0}
@@ -158,20 +156,20 @@ const FirstDict: React.FC = () => {
           style={{ position: "relative" }}
           code={`
             std::unordered_map<std::string, int> scores;
-            for (std::string team : {"Orion", "Vega", "Orion"}) {
-                ++[[1|scores[team]]];
-            }
+            [[1~50|++scores["Orion"];]]
+            [[2~50|++scores["Vega"];]]
+            [[3~50|++scores["Orion"];]]
             // Orion → 2, Vega → 1
           `}
         />
       </Blueprint>
-      <Panel x={1180} y={280} w={644} h={360} title={<span style={{ fontFamily: F.mono, textTransform: "none" }}>scores</span>} tag={cur > 0 ? `team = "${TEAMS[cur - 1]}"` : ""} color={C.blue} p={s(0, 20)} />
+      <Panel x={1180} y={280} w={644} h={320} title={<span style={{ fontFamily: F.mono, textTransform: "none" }}>scores</span>} color={C.blue} p={s(0, 20)} />
       <Cell k="Orion" ticks={[{ at: 1, d: 8, v: 0 }, { at: 1, d: 34, v: 1 }, { at: 3, d: 18, v: 2 }]} y={400} />
       <Cell k="Vega" ticks={[{ at: 2, d: 8, v: 0 }, { at: 2, d: 34, v: 1 }]} y={490} />
-      <Bullet x={96} y={700} w={1728} step={4} delay={0}>
-        Вираз <M>scores[team]</M> створює запис із нулем, якщо такого ключа ще немає. Потім <M>++</M> додає одиницю.
+      <Bullet x={96} y={660} w={1728} step={4} delay={0}>
+        Вираз <M>scores["Orion"]</M> створює запис із нулем, якщо такого ключа ще немає. Потім <M>++</M> додає одиницю.
       </Bullet>
-      <Bullet x={96} y={810} w={1728} step={4} delay={12}>
+      <Bullet x={96} y={760} w={1728} step={4} delay={12}>
         Щоб перевірити ключ без створення запису, використовуйте <M>find</M>, <M>count</M> або <M>contains</M>.
       </Bullet>
     </Slide>

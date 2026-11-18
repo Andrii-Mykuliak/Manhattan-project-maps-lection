@@ -318,39 +318,6 @@ const Buckets: React.FC = () => {
   );
 };
 
-/* Construction, assignment and free functions. */
-const Create: React.FC = () => {
-  const { s } = useSteps();
-  return (
-    <Slide title="Створення та зовнішні функції">
-      <Legend />
-      <Ledger
-        x={96}
-        y={250}
-        step={1}
-        perRow={false}
-        size={28}
-        rowH={84}
-        cols={[
-          { w: 600, head: "Операція" },
-          { w: 1128, head: "Що робить" },
-        ]}
-        rows={[
-          [<Op>{"конструктори, деструктор\noperator="}</Op>, "створюють словник (порожній, зі списку, з діапазону, копією чи переміщенням), знищують його або замінюють вміст"],
-          [<Op>m.get_allocator()</Op>, "повертає алокатор, через який контейнер виділяє пам’ять"],
-          [<Op>{"==, !="}</Op>, "порівнюють пари ключ-значення, а не порядок обходу; з C++20 != виводиться з =="],
-          [<Op>std::swap(a, b)</Op>, "обмінює вміст двох словників"],
-          [<Op v="C++20">std::erase_if(m, pred)</Op>, "видаляє всі пари, для яких pred повертає true, і повертає їхню кількість"],
-        ]}
-      />
-      <At x={1210} y={196} step={0} delay={20} size={24} weight={600} font={F.mono} color={C.faint}>
-        C++23: ще конструктор з std::from_range
-      </At>
-      <Source />
-    </Slide>
-  );
-};
-
 export const s4Slides: SlideDef[] = [
   { id: "access", title: "Доступ і пошук", steps: [40, 70, 50], C: Access },
   { id: "find", title: "Пошук без побічних ефектів", steps: [40, 60, 60, 50], C: Find },
@@ -358,5 +325,4 @@ export const s4Slides: SlideDef[] = [
   { id: "size", title: "Розмір і обхід", steps: [40, 60, 70, 40], C: SizeIter },
   { id: "erase", title: "Видалення", steps: [40, 70], C: Erase },
   { id: "buckets", title: "Групи хеш-таблиці", steps: [40, 70, 150, 50], C: Buckets },
-  { id: "create", title: "Створення", steps: [40, 70], C: Create },
 ];
